@@ -8,6 +8,7 @@ public class DecompTask {
 		System.out.println("Площадь треугольника равна " + area);
 	}
 
+///////////////////////////////////////////////////////////////////
 	public static void task02() {
 		int x = 35;
 		int y = 28;
@@ -22,12 +23,14 @@ public class DecompTask {
 		System.out.println("Наименьшее общее кратное чисел " + a + " и " + b + " равно " + nok);
 	}
 
+///////////////////////////////////////////////////////////////////
 	public static void task03() {
 		int a = 12, b = 8, c = 32, d = 16;
 		int nod = nod(nod(a, b), nod(c, d));
 		System.out.println(nod);
 	}
 
+///////////////////////////////////////////////////////////////////
 	public static void task04() {
 		int a = 6, b = 8, c = 12;
 		int nod;
@@ -39,18 +42,19 @@ public class DecompTask {
 		System.out.println(nok);
 	}
 
+///////////////////////////////////////////////////////////////////
 	public static void task05() {
 		int a = 6, b = 8, c = 12;
 		int min;
 		int max;
-		int sum;
 
 		min = min(min(a, b), c);
 		max = max(max(a, b), c);
-		sum = sum(min, max);
+		sum(min, max);
 
 	}
 
+///////////////////////////////////////////////////////////////////
 	public static void task06() {
 		int a = 6;
 		int areaHexagon;
@@ -58,22 +62,66 @@ public class DecompTask {
 		System.out.println(areaHexagon);
 	}
 
+///////////////////////////////////////////////////////////////////
 	public static void task07() {
 	}
 
-	public static void task09() {
-		int a = 3, b = 7, c = 11;
-		int nod;
-		nod = nod(nod(a, b), c);
-		if (Math.abs(nod) == 1) {
-			System.out.println("Числа " + a + ", " + b + ", " + c + " являются взаимно простыми");
-		} else {
-			System.out.println("Числа " + a + ", " + b + ", " + c + " не являются взаимно простыми");
-		}
+///////////////////////////////////////////////////////////////////	
+	public static void task08() {
 	}
 
+///////////////////////////////////////////////////////////////////
+	public static void task09() {
+		int a = 3, b = 7, c = 11;
+		simple(a, b, c);
+	}
 
+///////////////////////////////////////////////////////////////////	
+	public static void task10() {
+		int a = 1;
+		int b = 9;
+		System.out.println(factorial(a, b));
+	}
 
+///////////////////////////////////////////////////////////////////	
+	public static void task11() {
+		int[] mas = new int[] { 3, 5, 6, 9, 7, 1, 5, 8, 4, 9 };
+		// massInit(mas, i);
+		for (int j = 0; j < mas.length; j++) {
+			System.out.print(mas[j] + " ");
+		}
+		int k = 1;
+		int m = k + 2;
+		System.out.println();
+		massSum3(mas, k, m);
+	}
+
+///////////////////////////////////////////////////////////////////	
+	public static void task12() {
+		int x = 6, y = 3, z = 5, t = 5;
+		int gip;
+		int areaXY;
+		int areaZT;
+		int areaQuatro;
+
+		gip = gipotenuza(x, y);
+		areaXY = areaTri90(x, y);
+		areaZT = areaTriBySide(z, t, gip);
+		areaQuatro = areaXY + areaZT;
+		System.out.println("Площадь прямоугольника " + areaQuatro);
+	}
+
+///////////////////////////////////////////////////////////////////	
+	public static void task13() {
+		int a = 123698745;
+		
+		int count = count(a);
+		int[] mas = new int[count];
+		chToMass(mas, a);
+
+	}
+
+///////////////////////////////////////////////////////////////////
 	public static void task14() {
 		int a = 3345;
 		int b = 3456;
@@ -132,10 +180,89 @@ public class DecompTask {
 	}
 
 	//
+	// 09.
+	public static void simple(int a, int b, int c) {
+		int nod;
+		nod = nod(nod(a, b), c);
+		if (Math.abs(nod) == 1) {
+			System.out.println("Числа " + a + ", " + b + ", " + c + " являются взаимно простыми");
+		} else {
+			System.out.println("Числа " + a + ", " + b + ", " + c + " не являются взаимно простыми");
+		}
+	}
+
 	//
+	// 10. Написать метод(методы) для вычисления суммы факториалов всех нечетных
+	// чисел от 1 до 9.
+	public static int factorial(int a, int b) {
+		int fact = 1;
+		for (int i = a; i <= b; i++) {
+			fact *= i;
+		}
+		return fact;
+	}
+
 	//
+	// 11. Задан массив D. Определить следующие суммы: D[l] + D[2] + D[3]; D[3] + D[4] + D[5]; D[4] +D[5] +D[6].
+	// Пояснение. Составить метод(методы) для вычисления суммы трех последовательно расположенных элементов
+	// массива с номерами от k до m.
+	public static void massSum3(int[] a, int k, int m) {
+		int sum = 0;
+		for (int i = k; i <= m; i++) {
+			sum += a[i];
+		}
+		System.out.println(sum);
+	}
+
 	//
+	// 12. Даны числа X, Y, Z, Т — длины сторон четырехугольника. Написать метод(методы) вычисления его площади,
+	// если угол между сторонами длиной X и Y— прямой.
+	public static int areaTri90(int a, int b) {
+		int area;
+		area = (a * b) / 2;
+		return area;
+	}
+
+	public static int areaTriBySide(int a, int b, int c) {
+		int p;
+		int area;
+
+		p = (a + b + c) / 2;
+		area = (int) Math.sqrt(p * (p - a) * (p - b) * (p - c));
+
+		return area;
+	}
+
+	public static int gipotenuza(int a, int b) {
+		int c;
+		c = (int) Math.sqrt(a * a + b * b);
+		return c;
+	}
+
 	//
+	// 13. Дано натуральное число N. Написать метод(методы) для формирования массива, элементами которого являются цифры числа N.
+	public static int count(int a) {
+		int count = 0;
+		while (a > 0) {
+			count++;
+			a /= 10;
+		}
+		return count;
+	}
+	
+	public static void chToMass(int[] a, int b) {
+		while (b > 0) {
+			for (int i = 0; i < a.length; i++) {
+				int x;
+				x = b % 10;
+				b /= 10;
+
+				a[i] = x;
+				System.out.print(a[i] + " ");
+			}
+		}
+	}
+
 	//
 	// 14. Написать метод(методы), определяющий, в каком из данных двух чисел больше
 	// цифр.
